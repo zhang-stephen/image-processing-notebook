@@ -1,0 +1,14 @@
+name: img
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - scipy
+  - matplotlib
+  - pandas
+  - numba
+  - numpy
+  - pillow
+  - jupyter
+  - notebook
+  - conda-forge::nbstripout
