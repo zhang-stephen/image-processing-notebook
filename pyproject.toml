@@ -1,0 +1,7 @@
+# Common configurations for python sources
+
+# formatter - black
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+workers = 4

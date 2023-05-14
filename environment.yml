@@ -12,3 +12,5 @@ dependencies:
   - jupyter
   - notebook
   - conda-forge::nbstripout
+  - lxml
+  - black
