@@ -25,7 +25,24 @@ $ conda activate img
 
 为了更好的适应使用git管理Juptyer Notebook，所有提交到远端的Notebook中均使用[nbstripout](https://github.com/kynan/nbstripout)过滤掉输出数据，因此clone项目后需要重新运行以观察输出。
 
-此外，由于Github LFS不友好的机制，所有的图片文件均使用图床[sm.ms](https://smms.app)进行管理。
+此外，由于Github LFS不友好的机制，所有的图片文件均使用图床[sm.ms](https://smms.app)进行管理。此部分代码见[ImageHosting](./tools/ImageHosting/)。
+
+#### ImageHosting
+
+`ImageHosting`对外提供了[sm.ms](https://smms.app)的管理对象`smms_app`和对应的类`SmmsApp`，并提供了一组易于使用的API用于加载图像到本地。要使用它们，参考以下示例：
+
+```python
+from tools.ImageHosting import smms_app
+from pathlib import Path
+
+img: Path = smms_app('./.assets', '2uzYGhVDw1F6Nv5')
+```
+
+由于重载了`__call__`方法，所以可以像调用一个函数一样调用实例`smms_app`：
+
+- 第一个参数：下载图片的目标目录，支持绝对路径或者相对路径；
+- 第二个参数：图像在图床网站中的哈希值
+- 返回：被下载的图像文件对应的`Path`对象
 
 此repo暂**不**接受任何PR。
 

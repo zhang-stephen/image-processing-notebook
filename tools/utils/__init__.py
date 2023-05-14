@@ -2,8 +2,6 @@
 
 from .url import UniformResourceLocator
 
-__all__ = [
-    'UniformResourceLocator'
-]
+__all__ = ['UniformResourceLocator']
 
 # EOF
