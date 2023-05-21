@@ -2,8 +2,9 @@
 
 from pathlib import Path
 from typing import Tuple, Union
+from urllib.request import urlopen, Request
 
-import requests as req
+# import requests as req
 
 from ..utils import UniformResourceLocator
 
@@ -56,11 +57,23 @@ class ImageHosting:
         img = dest_dir / filename
 
         if not img.exists():
-            resp = req.get(url, headers=headers)
+            resp = urlopen(url)
             with open(img, 'wb') as f:
                 f.write(resp.content)
 
         return img
+
+    def open(self, url: str):
+        '''
+        load online image into the memory
+
+        Args:
+            url (str): the url of pure online image
+
+        Returns:
+            a file-like object
+        '''
+        return urlopen(Request(url, headers=headers))
 
     def upload(self, src: Union[Path, str]) -> str:
         '''
@@ -75,7 +88,7 @@ class ImageHosting:
         '''
         ...
 
-    def __call__(self, dest_dir: str, hashes: str) -> Path:
+    def __call__(self, hashes: str):
         '''
         interface to download image
 
@@ -84,10 +97,10 @@ class ImageHosting:
             hashes (str): hashed path of target images
 
         Returns:
-            Path: a path object of downloaded image
+            a file-like object
         '''
-        filename, url = self.parse(hashes)
-        return self.download(Path(dest_dir), filename, url)
+        _, url = self.parse(hashes)
+        return self.open(url)
 
 
 # EOF

@@ -35,22 +35,30 @@ $ conda activate img
 from imgtools.ImageHosting import smms_app
 from pathlib import Path
 
-img: Path = smms_app('./.assets', '2uzYGhVDw1F6Nv5')
+img = smms_app('2uzYGhVDw1F6Nv5')
 ```
 
 由于重载了`__call__`方法，所以可以像调用一个函数一样调用实例`smms_app`：
 
-- 第一个参数：下载图片的目标目录，支持绝对路径或者相对路径；
-- 第二个参数：图像在图床网站中的哈希值
-- 返回：被下载的图像文件对应的`Path`对象
+- 入参：图像在图床网站中的哈希值
+- 返回：包含图像的类文件对象
 
 此repo暂**不**接受任何PR。
 
 ### References
 
+#### Python Programming
+
+1. [Python 3.10 Documentations](https://docs.python.org/zh-cn/3.10/)
+2. [Pillow Documentations](https://docs.python.org/zh-cn/3.10/): a fork of PIL(Python Image Library)
+
+#### 图片素材来源
+1. [images from *Digital Image Processing* 3rd edition](https://github.com/lionelee/DIP3E_images)
+2. [《图像处理与图像分析技术（C/C++语言版）》随书课件]
+
 #### For Starter
 
-1. Digital Image Processing, 4th Edition(Global), Rafael C. Gonsalez
+1. *Digital Image Processing*, 4th Edition(Global), Rafael C. Gonsalez
 2. [图像处理与图像分析基础（C/C++语言版）](http://www.tup.tsinghua.edu.cn/booksCenter/book_08523801.html), 任明武, 南京理工大学
 
 <!-- EOF -->
