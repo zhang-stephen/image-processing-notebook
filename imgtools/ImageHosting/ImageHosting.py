@@ -2,11 +2,11 @@
 
 from pathlib import Path
 from typing import Tuple, Union
-from urllib.request import urlopen, Request
 
-# import requests as req
+import requests as req
 
 from ..utils import UniformResourceLocator
+
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36'
@@ -42,27 +42,6 @@ class ImageHosting:
         '''
         ...
 
-    def download(self, dest_dir: Path, filename: str, url: str) -> Path:
-        '''
-        download the image to destination directory
-
-        Args:
-            dest_dir (Path): destination directory to store the image
-            filename (str): filename of image without parent path, or decoded by APIs of Image Hosting Website
-            url (str): the direct URL to image
-
-        Returns:
-            Path: a path object of downloaded image
-        '''
-        img = dest_dir / filename
-
-        if not img.exists():
-            resp = urlopen(url)
-            with open(img, 'wb') as f:
-                f.write(resp.content)
-
-        return img
-
     def open(self, url: str):
         '''
         load online image into the memory
@@ -73,7 +52,7 @@ class ImageHosting:
         Returns:
             a file-like object
         '''
-        return urlopen(Request(url, headers=headers))
+        return req.get(url, headers=headers)
 
     def upload(self, src: Union[Path, str]) -> str:
         '''
@@ -88,19 +67,20 @@ class ImageHosting:
         '''
         ...
 
-    def __call__(self, hashes: str):
+    def __call__(self, hashes: str, dest: Union[Path, str]):
         '''
         interface to download image
 
         Args:
             dest_dir (str): destination directory to store the image
             hashes (str): hashed path of target images
-
-        Returns:
-            a file-like object
         '''
+        dest = dest if isinstance(dest, Path) else Path(dest)
         _, url = self.parse(hashes)
-        return self.open(url)
+
+        with req.get(url, headers=headers) as resp:
+            with open(dest, 'wb') as f:
+                f.write(resp.content)
 
 
 # EOF

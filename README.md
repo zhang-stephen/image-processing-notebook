@@ -45,6 +45,12 @@ img = smms_app('2uzYGhVDw1F6Nv5')
 
 此repo暂**不**接受任何PR。
 
+#### bmp2png
+
+由于[sm.ms](https://smms.app)不支持上传BMP格式的图片，因此需要一个工具将其转换为同样是无损压缩的PNG格式。见[bmp2png.py](./imgtools/utils/bmp2png.py)。
+
+运行`python3 imgtools/utils/bmp2png.py /path/to/image.bmp`，即可在相同路径下生成PNG格式的图片。
+
 ### References
 
 #### Python Programming
@@ -54,7 +60,7 @@ img = smms_app('2uzYGhVDw1F6Nv5')
 
 #### 图片素材来源
 1. [images from *Digital Image Processing* 3rd edition](https://github.com/lionelee/DIP3E_images)
-2. [《图像处理与图像分析技术（C/C++语言版）》随书课件]
+2. [《图像处理与图像分析技术（C/C++语言版）》随书课件](http://www.tup.tsinghua.edu.cn/booksCenter/book_08523801.html)
 
 #### For Starter
 
