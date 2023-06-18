@@ -21,7 +21,11 @@ $ conda env create --file environment.yml
 $ conda activate img
 ```
 
-然后需要在项目根目录下执行`pip install [-e] ./`，安装`imgtools/`供notebooks调用。最后在项目根目录下运行`jupyter notebook`或者`jupyter lab`打开项目即可。
+然后需要在项目根目录下执行以下命令：
+ - `pip install [-e] ./`，安装`imgtools/`供notebooks调用；
+ - `python init.py`，以下载所有的示例图片
+
+最后在项目根目录下运行`jupyter notebook`或者`jupyter lab`打开项目即可。
 
 为了更好的适应使用git管理Juptyer Notebook，所有提交到远端的Notebook中均使用[nbstripout](https://github.com/kynan/nbstripout)过滤掉输出数据，因此clone项目后需要重新运行以观察输出。
 
@@ -35,13 +39,14 @@ $ conda activate img
 from imgtools.ImageHosting import smms_app
 from pathlib import Path
 
-img = smms_app('2uzYGhVDw1F6Nv5')
+img = smms_app('2uzYGhVDw1F6Nv5'， 'x.png')
 ```
 
 由于重载了`__call__`方法，所以可以像调用一个函数一样调用实例`smms_app`：
 
-- 入参：图像在图床网站中的哈希值
-- 返回：包含图像的类文件对象
+入参：
+ - 图像在图床网站中的哈希值
+ - 目标文件名
 
 此repo暂**不**接受任何PR。
 

@@ -24,4 +24,5 @@ def imgs_fetch(img_list_csv: Union[str, Path]):
 
 
 if __name__ == '__main__':
+    ASSETS_DIR.mkdir(mode=0o644, parents=True, exist_ok=True)
     imgs_fetch('./imglist.csv')
