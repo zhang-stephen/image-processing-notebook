@@ -7,16 +7,16 @@ from typing import Union
 from PIL import Image
 
 
-def bmp2png(src: Union[str, Path]):
+def any2png(src: Union[str, Path]):
     src = src if isinstance(src, Path) else Path(src)
     dst = src.with_suffix('.png')
 
-    with Image.open(src) as bmp:
-        if bmp.format != 'BMP':
+    with Image.open(src) as im:
+        if im.format not in ['BMP', 'TIFF']:
             return
 
-        bmp.save(dst)
+        im.save(dst)
 
 
 if __name__ == '__main__':
-    bmp2png(sys.argv[1])
+    any2png(sys.argv[1])

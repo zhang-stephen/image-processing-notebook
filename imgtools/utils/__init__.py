@@ -1,6 +1,6 @@
 #!/bin/python3
 
-from .bmp2png import bmp2png
+from .any2png import any2png
 from .constant import ASSETS_DIR
 from .url import UniformResourceLocator
 
@@ -8,7 +8,7 @@ __all__ = [
     # classes
     'UniformResourceLocator',
     # functions
-    'bmp2png',
+    'any2png',
     # constants
     'ASSETS_DIR',
 ]
