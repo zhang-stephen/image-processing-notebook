@@ -39,7 +39,7 @@ $ conda activate img
 from imgtools.ImageHosting import smms_app
 from pathlib import Path
 
-img = smms_app('2uzYGhVDw1F6Nv5'， 'x.png')
+smms_app('2uzYGhVDw1F6Nv5'，'x.png')
 ```
 
 由于重载了`__call__`方法，所以可以像调用一个函数一样调用实例`smms_app`：
@@ -48,13 +48,19 @@ img = smms_app('2uzYGhVDw1F6Nv5'， 'x.png')
  - 图像在图床网站中的哈希值
  - 目标文件名
 
+效果：
+ - 将指定的图片按目标文件名保存至本地
+
+返回值：
+ - 无
+
 此repo暂**不**接受任何PR。
 
-#### bmp2png
+#### any2png
 
-由于[sm.ms](https://smms.app)不支持上传BMP格式的图片，因此需要一个工具将其转换为同样是无损压缩的PNG格式。见[bmp2png.py](./imgtools/utils/bmp2png.py)。
+由于[sm.ms](https://smms.app)不支持上传BMP和TIFF格式的图片，因此需要一个工具将其转换为同样是无损压缩的PNG格式。见[any2png.py](./imgtools/utils/any2png.py)。
 
-运行`python3 imgtools/utils/bmp2png.py /path/to/image.bmp`，即可在相同路径下生成PNG格式的图片。
+以BMP格式为例，运行`python3 imgtools/utils/any2png.py /path/to/image.bmp`，即可在相同路径下生成PNG格式的图片。
 
 ### References
 

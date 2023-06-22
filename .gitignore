@@ -161,3 +161,7 @@ cython_debug/
 
 # assets donwloaded from image hosting site
 /.assets
+
+# for system related files
+## mac OS
+.DS_Store
