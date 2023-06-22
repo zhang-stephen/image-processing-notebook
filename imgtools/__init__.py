@@ -1,7 +1,7 @@
 #!/bin/python3
 
-from . import ImageHosting, utils
+from . import ImageHosting, operations, utils
 
-__all__ = ['utils', 'ImageHosting']
+__all__ = ['utils', 'ImageHosting', 'operations']
 
 # EOF
