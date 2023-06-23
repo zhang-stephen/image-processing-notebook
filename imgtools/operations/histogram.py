@@ -8,11 +8,11 @@ from matplotlib import pyplot as plt
 from .algorithm import find_ceil_pow2
 
 
-def histogram(im: Union[np.ndarray, list[list]], nrows: int = 1, ncols: int = 1, index: int = 1, *, title: str = ''):
+def histogram(im: Union[np.ndarray, list[list]], nrows: int = 1, ncols: int = 1, index: int = 1, *, title: str = '', width: int = 8):
     if index > ncols * nrows:
         raise ValueError(f'Invalid subplot index {index} for {nrows} rows and {ncols} columns')
 
-    pixel_ceil = find_ceil_pow2(np.max(im))
+    pixel_ceil = find_ceil_pow2(np.max(im), exp=width)
     histo = np.zeros((pixel_ceil,))
 
     for pixel in np.nditer(im):
@@ -20,6 +20,7 @@ def histogram(im: Union[np.ndarray, list[list]], nrows: int = 1, ncols: int = 1,
 
     plt.subplot(nrows, ncols, index)
     plt.bar(range(pixel_ceil), histo)
+    plt.yticks([])
 
     if len(title) > 0:
         plt.title(title)
