@@ -165,3 +165,7 @@ cython_debug/
 # for system related files
 ## mac OS
 .DS_Store
+
+# ipynb exportation
+*.html
+*.pdf
